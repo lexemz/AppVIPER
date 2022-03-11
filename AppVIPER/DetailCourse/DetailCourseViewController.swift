@@ -7,6 +7,15 @@
 
 import UIKit
 
+protocol DetailCourseViewInputProtocol: AnyObject {
+    
+}
+
+protocol DetailCourseViewOutputProtocol {
+    init(view: DetailCourseViewInputProtocol)
+    func showDetails()
+}
+
 class DetailCourseViewController: UIViewController {
 
     @IBOutlet var courseImageView: UIImageView!
@@ -16,13 +25,18 @@ class DetailCourseViewController: UIViewController {
     @IBOutlet var testsCountLabel: UILabel!
     
     var course: Course!
+    var presenter: DetailCourseViewOutputProtocol!
+    
+    let configurator: DetailCourseConfiguratorInputProtocol = DetailCourseConfigurator()
     
     private var isFavorite = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configurator.configure(with: self, and: course)
         setupUI()
+        
+        presenter.showDetails()
     }
     
     @IBAction func likeButtonPressed() {
@@ -50,3 +64,7 @@ class DetailCourseViewController: UIViewController {
 
 }
 
+// MARK: - DetailCourseViewInputProtocol
+extension DetailCourseViewController: DetailCourseViewInputProtocol {
+    
+}
