@@ -12,22 +12,19 @@
         <!--Root View Controller-->
         <scene sceneID="gqQ-n9-hjP">
             <objects>
-                <tableViewController id="hdV-jq-5X1" customClass="CoursesTableViewController" customModule="AppMVVM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hdV-jq-5X1" customClass="CoursesTableViewController" customModule="AppVIPER" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="lEO-eN-Ap9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CourseCell" id="OHf-Aq-n8l" customClass="CourseTableViewCell" customModule="AppMVVM" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CourseCell" id="OHf-Aq-n8l" customClass="CourseTableViewCell" customModule="AppVIPER" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OHf-Aq-n8l" id="AQs-Ih-Lk1" customClass="CourseTableViewCell" customModule="AppMVVM" customModuleProvider="target">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OHf-Aq-n8l" id="AQs-Ih-Lk1" customClass="CourseTableViewCell" customModule="AppVIPER" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="2tR-bi-pKf"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -36,6 +33,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="Hwv-AG-WNJ"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetails" id="gdg-An-tUd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Whf-iu-d8U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,7 +60,7 @@
         <!--Detail Course View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="DetailCourseViewController" customModule="AppMVVM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DetailCourseViewController" customModule="AppVIPER" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

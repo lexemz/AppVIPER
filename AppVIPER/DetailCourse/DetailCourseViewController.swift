@@ -31,14 +31,10 @@ class DetailCourseViewController: UIViewController {
     @IBOutlet var lessonsCountLabel: UILabel!
     @IBOutlet var testsCountLabel: UILabel!
     
-    var course: Course!
     var presenter: DetailCourseViewOutputProtocol!
-    
-    let configurator: DetailCourseConfiguratorInputProtocol = DetailCourseConfigurator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurator.configure(with: self, and: course)
         presenter.showDetails()
     }
     
