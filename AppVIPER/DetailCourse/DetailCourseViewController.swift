@@ -7,13 +7,20 @@
 
 import UIKit
 
+// Методы вызываеются из Presenter
 protocol DetailCourseViewInputProtocol: AnyObject {
+    func displayCourseName(with title: String)
+    func displayLessonsCount(with title: String)
+    func displayTestsCount(with title: String)
+    func displayImage(with data: Data)
     
+    func displayColorForFavoriteButton(with status: Bool)
 }
 
 protocol DetailCourseViewOutputProtocol {
     init(view: DetailCourseViewInputProtocol)
     func showDetails()
+    func likeButtonPressed()
 }
 
 class DetailCourseViewController: UIViewController {
@@ -29,42 +36,36 @@ class DetailCourseViewController: UIViewController {
     
     let configurator: DetailCourseConfiguratorInputProtocol = DetailCourseConfigurator()
     
-    private var isFavorite = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self, and: course)
-        setupUI()
-        
         presenter.showDetails()
     }
     
     @IBAction func likeButtonPressed() {
-        isFavorite.toggle()
-        setupFavoriteStatus()
-        UDManager.shared.saveDataUD(status: isFavorite, courseName: course.name)
+        presenter.likeButtonPressed()
     }
-    
-    private func setupUI () {
-        title = course.name
-        
-        lessonsCountLabel.text = "\(course.numberOfLessons) - Lessons"
-        testsCountLabel.text = "\(course.numberOfTests) - Tests"
-        
-        guard let imageData = NetworkManager.shared.fetchImage(url: course.imageUrl) else { return }
-        courseImageView.image = UIImage(data: imageData)
-        
-        isFavorite = UDManager.shared.getDataUD(courseName: course.name)
-        setupFavoriteStatus()
-    }
-    
-    private func setupFavoriteStatus() {
-        likeButton.tintColor = isFavorite ? .red : .gray
-    }
-
 }
 
 // MARK: - DetailCourseViewInputProtocol
 extension DetailCourseViewController: DetailCourseViewInputProtocol {
+    func displayCourseName(with title: String) {
+        self.title = title
+    }
     
+    func displayLessonsCount(with title: String) {
+        lessonsCountLabel.text = title
+    }
+    
+    func displayTestsCount(with title: String) {
+        testsCountLabel.text = title
+    }
+    
+    func displayImage(with data: Data) {
+        courseImageView.image = UIImage(data: data)
+    }
+    
+    func displayColorForFavoriteButton(with status: Bool) {
+        likeButton.tintColor = status ? .red : .gray
+    }
 }
