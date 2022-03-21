@@ -24,7 +24,7 @@ class DetailCoursePresenter: DetailCourseViewOutputProtocol {
         self.view = view
     }
     
-    func showDetails() {
+    func showCourseDetails() {
         interactor.provideCourseDetails()
     }
     

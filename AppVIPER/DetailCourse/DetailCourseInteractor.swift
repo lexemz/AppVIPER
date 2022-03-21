@@ -6,9 +6,7 @@
 //
 
 protocol DetailCourseInteractorInputProtocol {
-    var isFavorite: Bool { get }
-    init(presenter: DetailCourseInteractorOutputProtocol,
-         course: Course)
+    init(presenter: DetailCourseInteractorOutputProtocol, course: Course)
     func provideCourseDetails()
     func toggleLikeButton()
 }
@@ -21,7 +19,8 @@ protocol DetailCourseInteractorOutputProtocol: AnyObject {
 class CourseDetailsInteractor: DetailCourseInteractorInputProtocol {
     unowned let presenter: DetailCourseInteractorOutputProtocol
     
-    var isFavorite: Bool {
+    private let course: Course
+    private var isFavorite: Bool {
         get {
             UDManager.shared.getDataUD(courseName: course.name)
         }
@@ -29,8 +28,6 @@ class CourseDetailsInteractor: DetailCourseInteractorInputProtocol {
             UDManager.shared.saveDataUD(status: newValue, courseName: course.name)
         }
     }
-    
-    private let course: Course
     
     required init(presenter: DetailCourseInteractorOutputProtocol, course: Course) {
         self.presenter = presenter

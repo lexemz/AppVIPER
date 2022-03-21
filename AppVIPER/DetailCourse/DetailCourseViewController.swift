@@ -19,8 +19,8 @@ protocol DetailCourseViewInputProtocol: AnyObject {
 
 protocol DetailCourseViewOutputProtocol {
     init(view: DetailCourseViewInputProtocol)
-    func showDetails()
-    func likeButtonPressed()
+    func showCourseDetails() // Показать инфо по курсу
+    func likeButtonPressed() // Сообщить Presenter, что была нажата кнопка
 }
 
 class DetailCourseViewController: UIViewController {
@@ -35,7 +35,7 @@ class DetailCourseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.showDetails()
+        presenter.showCourseDetails()
     }
     
     @IBAction func likeButtonPressed() {
