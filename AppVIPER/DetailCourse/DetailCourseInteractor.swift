@@ -22,10 +22,10 @@ class CourseDetailsInteractor: DetailCourseInteractorInputProtocol {
     private let course: Course
     private var isFavorite: Bool {
         get {
-            UDManager.shared.getDataUD(courseName: course.name)
+            UserDefaultsManager.shared.getDataUD(courseName: course.name)
         }
         set {
-            UDManager.shared.saveDataUD(status: newValue, courseName: course.name)
+            UserDefaultsManager.shared.setDataUD(status: newValue, courseName: course.name)
         }
     }
     

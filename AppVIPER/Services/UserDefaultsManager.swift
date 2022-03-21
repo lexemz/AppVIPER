@@ -7,12 +7,12 @@
 
 import Foundation
 
-class UDManager {
-    static let shared = UDManager()
+class UserDefaultsManager {
+    static let shared = UserDefaultsManager()
     
     private init() {}
     
-    func saveDataUD(status: Bool, courseName: String) {
+    func setDataUD(status: Bool, courseName: String) {
         UserDefaults.standard.set(status, forKey: courseName)
     }
     
