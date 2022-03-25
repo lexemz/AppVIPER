@@ -7,6 +7,15 @@
 
 import Foundation
 
+// Протокол для определения секций таблицы
+protocol CourseSectionViewModelProtocol {
+    var rows: [CourseCellViewModelProtocol] { get }
+}
+
+class CourseSectionViewModel: CourseSectionViewModelProtocol {
+    var rows: [CourseCellViewModelProtocol] = []
+}
+
 protocol CourseCellViewModelProtocol {
     var cellIdentifier: String { get }
     var cellHeight: Double { get }
@@ -14,11 +23,6 @@ protocol CourseCellViewModelProtocol {
     var imageData: Data? { get }
     
     init(course: Course)
-}
-
-// Протокол для определения секций таблицы
-protocol CourseSectionViewModelProtocol {
-    var rows: [CourseCellViewModelProtocol] { get }
 }
 
 class CourseCellViewModel: CourseCellViewModelProtocol {
@@ -43,8 +47,4 @@ class CourseCellViewModel: CourseCellViewModelProtocol {
     required init(course: Course) {
         self.course = course
     }
-}
-
-class CourseSectionViewModel: CourseSectionViewModelProtocol {
-    var rows: [CourseCellViewModelProtocol] = []
 }

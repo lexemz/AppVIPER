@@ -60,10 +60,8 @@ extension CoursesTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellViewModel = sectionViewModel.rows[indexPath.row]
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: cellViewModel.cellIdentifier,
-            for: indexPath
-        ) as! CourseTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellViewModel.cellIdentifier,
+                                                 for: indexPath) as! CourseTableViewCell
         cell.viewModel = cellViewModel
         return cell
     }
